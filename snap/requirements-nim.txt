@@ -1,0 +1,3 @@
+##Requirements for RandIP Nim##
+##Nim 0.19.x##
+fab

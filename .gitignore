@@ -1,0 +1,4 @@
+snap/src/temp/*.log
+snap/src/temp/*.cap
+snap/src/tools/test.nim
+snap/src/temp/ssh_stats
