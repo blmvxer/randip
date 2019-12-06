@@ -15,7 +15,7 @@ clear
 ARCH=$(uname -m)
 CUROS=$(uname)
 NIMVER=$(nim -v | awk '{print $4; exit}')
-REQVER="0.20.99"
+REQVER="1.0.4"
 
 if [ $ARCH = "x86_64" ]; then
    BIN=bin/x86_64
@@ -56,7 +56,7 @@ else
     fi
   else
     clear
-    echo "Nim not installed or in Path or not version 0.20.99..."
+    echo "Nim not installed or in Path or not version 1.0.4..."
     exit 1
   fi
 fi
