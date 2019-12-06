@@ -1,6 +1,8 @@
 # RandIP 1.9.3
 RandIP is a nim application that generates random IP address's and uses sockets to test whether the connection is valid or not with the additional test on Telnet and SSH.
 <br>
+Plans to update RandIP to work with Termux and Nim 1.X (12/5/2019)
+<br>
 <b>:Features:</b>
 <br>
 
