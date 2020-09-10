@@ -17,6 +17,7 @@ var
   verStr*: string
   arguments = commandLineParams()
   ipAddr*: string
+  exploit: bool
 
 sucCon = @[]
 verStr = "RandIP 1.9.6\n"
@@ -41,7 +42,7 @@ proc main(): bool =
     else:
       echo "Skipping HTTP/S Probe on " & ipAddr & "\n"
     if ssh == true:
-      getSSH(ipAddr)
+      getSSH(ipAddr, exploit)
     else:
       echo "Skipping SSH Probe on " & ipAddr & "\n"
     sleep(1500)#This is to eliminate hanging between consecutive connections
@@ -59,9 +60,12 @@ proc sshOnly(): bool =
     sock.connect(ipAddr, Port(22), 500 * 1)
     green("[+]Success! \n")
     sucSSH.add(ipAddr & ", ")
-    exploitHandler(ipAddr, "sshEnum")
-    exploitHandler(ipAddr, "sshLogin")
-    exploitHandler(ipAddr, "openSSL")
+    if exploit == true:
+      exploitHandler(ipAddr, "sshEnum")
+      exploitHandler(ipAddr, "sshLogin")
+      exploitHandler(ipAddr, "openSSL")
+    else:
+      discard
   except:
     errorHandler(2, ipAddr)
   finally:
@@ -79,6 +83,8 @@ proc handler() {. noconv .} =
   white($(log), nl = false)
   blue(" ssl: ", nl = false)
   white($(ssl), nl = false)
+  blue(" exploit: ", nl = false)
+  white($(exploit), nl = false)
   echo "\n"
   good("Successful Connections\n")
   if sucCon.len == 0:
@@ -124,6 +130,10 @@ for arg in arguments:
     ssl = true
   elif "ssl:off" in arg:
     ssl = false
+  elif "exploit:on" in arg:
+    exploit = true
+  elif "exploit:off" in arg:
+    exploit = false
   elif "help" in arg:
     cmdHelp()
     quit(0)
@@ -133,6 +143,7 @@ for arg in arguments:
     ssh = true
     log = false
     ssl = false
+    exploit = true
 
 while true:
   setControlCHook(handler)

@@ -15,7 +15,7 @@ clear
 ARCH=$(uname -m)
 CUROS=$(uname)
 NIMVER=$(nim -v | awk '{print $4; exit}')
-REQVER="1.0.4"
+REQVER="1.2.6"
 
 if [ $ARCH = "x86_64" ]; then
    BIN=bin/x86_64
@@ -37,7 +37,7 @@ if [ ! -f src/randip.nim ]; then
   echo "src/randip.nim not found...exiting"
   exit 1
 else
-  if [ "$NIMVER" == "$REQVER" ]; then
+  if [ "$NIMVER" -ge "$REQVER" ]; then
     echo "Nim build found...Building against version $NIMVER $ARCH"
     echo "Beginning make on randip.nim"
     nim c --cc=gcc -x --nilseqs:on --hints:off -d:lineTrace -d:ssl --opt:size --passC:-Ofast -d:release --parallelBuild:0 --app:console src/randip.nim
@@ -56,7 +56,7 @@ else
     fi
   else
     clear
-    echo "Nim not installed or in Path or not version 1.0.4..."
+    echo "Nim not installed or in Path or not version $REQVER"
     exit 1
   fi
 fi

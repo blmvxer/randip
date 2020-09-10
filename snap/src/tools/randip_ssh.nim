@@ -10,7 +10,7 @@ var
 
 export sucSSH, testSSH, sshVer
 
-proc getSSH*(host: string): bool {. discardable .} =
+proc getSSH*(host: string, exploit: bool): bool {. discardable .} =
   var
     sock = newSocket(AF_INET, SOCK_STREAM, IPPROTO_TCP)
   try:
