@@ -2,3 +2,4 @@ randip/src/temp/*.log
 randip/src/temp/*.cap
 randip/src/tools/test.nim
 randip/src/temp/ssh_stats
+randip/randip

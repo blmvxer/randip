@@ -8,5 +8,5 @@ license       = "MIT"
 
 # Deps
 
-requires "nim >= 0.20.99"
+requires "nim >= 1.2.6"
 requires "fab"
