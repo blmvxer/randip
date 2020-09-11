@@ -1,4 +1,4 @@
-import strutils, sequtils, streams, random
+import strutils, streams, random
 
 var
   census = "../temp/randip.census"

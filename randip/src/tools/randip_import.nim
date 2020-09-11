@@ -5,3 +5,4 @@ import randip_err, randip_exploit, randip_http, randip_log, randip_shell, randip
 export http, getPage, getSSH, errorHandler
 export sucSSH, randipShell, sshAll
 export exploitHandler, ssh, logging, cmdHelp
+export userList, userLen

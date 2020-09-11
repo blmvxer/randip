@@ -6,11 +6,9 @@
 #Compiler options
 {.deadCodeElim: on, hints: off, warnings: on.}
 #
-import random, strutils, fab, os, httpclient, net, nativesockets
+import strutils, fab, os, net, nativesockets
 
 import tools/randip_import, tools/randip_helper
-
-import terminal
 
 var
   sucCon*: seq[string]
@@ -143,7 +141,7 @@ for arg in arguments:
     ssh = true
     log = false
     ssl = false
-    exploit = true
+    exploit = false
 
 while true:
   setControlCHook(handler)
